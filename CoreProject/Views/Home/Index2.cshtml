@@ -1,0 +1,64 @@
+﻿@model FormData
+@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+
+<form asp-action="UploadFile" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-lg-4">ФИО</div>
+        <div class="col-lg-8">
+            <input asp-for="name" autocomplete="off" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4">Заголовок</div>
+        <div class="col-lg-8">
+            <input asp-for="title" autocomplete="off" class="form-control">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4">Номер группы</div>
+        <div class="col-lg-8">
+            <input asp-for="group" autocomplete="off" class="form-control">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4">ФИО преподавателя</div>
+        <div class="col-lg-8">
+            <input asp-for="tutorName" autocomplete="off" class="form-control">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4">Ученая степень</div>
+        <div class="col-lg-8">
+            <input asp-for="academicDegree" autocomplete="off" class="form-control">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4">Ученое звание</div>
+        <div class="col-lg-8">
+            <input asp-for="academicTitle" autocomplete="off" class="form-control">
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-lg-4">Файл</div>
+        <div class="col-lg-8">
+            <input asp-for="file" autocomplete="off" type="file">
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-offset-4 col-lg-8">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+
+</form>

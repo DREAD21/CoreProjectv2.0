@@ -1,0 +1,43 @@
+﻿@model MainFormData
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Поиск с помощью Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Подключение стилей Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Обертка для элементов, которые нужно центрировать -->
+    <div class="d-flex justify-content-center align-items-center" style="height: 75vh;">
+        <!-- Форма поиска с dropdown меню -->
+        <form class="form-inline" asp-action="Index4" method="get">
+            <div class="form-group w-200 mx-auto">
+                <input asp-for="text" type="text" class="form-control" id="search-input" placeholder="Поиск">
+            </div>
+            <!-- Кнопка dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Фильтр
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button class="dropdown-item" value="ФИО студента">ФИО студента</button>
+                    <a class="dropdown-item" value="Название работы">Название работы</a>
+                    <a class="dropdown-item" value="ФИО руководителя">ФИО руководителя</a>
+                    <a class="dropdown-item" value="Содержание диплома">Содержание диплома</a>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Найти" />
+        </form>
+    </div>
+    <!-- Подключение скриптов Bootstrap и jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

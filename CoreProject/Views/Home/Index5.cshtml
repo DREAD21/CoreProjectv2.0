@@ -1,0 +1,28 @@
+﻿@{
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Фамилия</th>
+            <th>Группа</th>
+            <th>Дата</th>
+            <th>Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><a class="text" value="@item.Title" href="~/Home/Index6?value=@item.ThesisId">@item.Title</a></td>
+                <td>@item.StudentSurname</td>
+                <td>@item.StudentGroup</td>
+                <td>@item.UploadDate</td>
+                <td>@item.ThesisId</td>
+            </tr>
+        }
+    </tbody>
+</table>
