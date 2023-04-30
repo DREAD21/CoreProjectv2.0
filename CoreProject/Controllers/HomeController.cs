@@ -58,10 +58,11 @@ namespace CoreProject.Controllers
         {
             return mainFormData.dropDownText;
         }
-        public async Task<IActionResult> Index4(string text)
+        public async Task<IActionResult> Index4(string text, string dropdown)
         {
-            var model = await getWorks(text);
-            return View(model);
+               var model = await getWorks(text, dropdown);
+               return View(model);
+
         }
         public async Task<IActionResult> Index5()
         {
@@ -173,9 +174,9 @@ namespace CoreProject.Controllers
                 }
             }
         }
-        public async Task<List<workModel>> getWorks(string text)
+        public async Task<List<workModel>> getWorks(string text, string dropdown)
         {
-            string url = "https://localhost:7129/Postgre/getInfo?info=" + "Фамилия студента&text=" + text;
+            string url = "https://localhost:7129/Postgre/getInfo?info=" + dropdown +"&text=" + text;
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             string response;

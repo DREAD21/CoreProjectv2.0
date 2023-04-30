@@ -21,23 +21,37 @@
                 <input asp-for="text" type="text" class="form-control" id="search-input" placeholder="Поиск">
             </div>
             <!-- Кнопка dropdown -->
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Фильтр
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button class="dropdown-item" value="ФИО студента">ФИО студента</button>
-                    <a class="dropdown-item" value="Название работы">Название работы</a>
-                    <a class="dropdown-item" value="ФИО руководителя">ФИО руководителя</a>
-                    <a class="dropdown-item" value="Содержание диплома">Содержание диплома</a>
-                </div>
+            <div class="form-group">
+                <select class="form-control" id="dropdown" name="dropdown">
+                    <option value="Фамилия студента">Фамилия студента</option>
+                    <option value="Фамилия преподавателя">Фамилия руководителя</option>
+                    <option value="Заголовок">Название работы</option>
+                </select>
             </div>
             <input type="submit" class="btn btn-primary" value="Найти" />
         </form>
     </div>
     <!-- Подключение скриптов Bootstrap и jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-item').click(function () {
+                var value = $(this).data('value');
+                $.ajax({
+                    type: 'POST',
+                    url: '/Controller/Privacy',
+                    data: { value: value },
+                    success: function (result) {
+                        // Обработка успешного ответа от сервера
+                    },
+                    error: function () {
+                        // Обработка ошибки
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
