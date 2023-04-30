@@ -42,7 +42,7 @@ namespace CoreProject.Controllers
             {
                 product = await response.Content.ReadAsByteArrayAsync();
             }
-            return File(product, "application/pdf", value.ToString());
+            return File(product, "application/pdf", "11.pdf");
         }
         public IActionResult Privacy()
         {
@@ -112,17 +112,20 @@ namespace CoreProject.Controllers
                 response22 = streamReader.ReadToEnd();
             }
 
+
             var workResponse = JsonConvert.DeserializeObject<List<workModel>>(response22);
 
+            int size = workResponse.Count;
+
             using (var httpClient = new HttpClient())
-            {
+            {   
                 using (var form = new MultipartFormDataContent())
                 {
                     using (var fileContent = new ByteArrayContent(bytes))
                     {
                         fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
-                        form.Add(fileContent, "file", "232");
-                        var response223343 = await httpClient.PostAsync("https://localhost:7224/post?key=" + "42", form); // какая то хуйня
+                        form.Add(fileContent, "file", "232");      
+                        var response223343 = await httpClient.PostAsync("https://localhost:7224/post?key=" + size, form); // какая то хуйня
                         response.EnsureSuccessStatusCode();
                     }
                 }
