@@ -125,7 +125,7 @@ namespace CoreProject.Controllers
                     {
                         fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
                         form.Add(fileContent, "file", "232");      
-                        var response223343 = await httpClient.PostAsync("https://localhost:7224/post?key=" + size, form); // какая то хуйня
+                        var response223343 = await httpClient.PostAsync("https://localhost:7224/post?key=" + size, form);
                         response.EnsureSuccessStatusCode();
                     }
                 }
@@ -134,6 +134,7 @@ namespace CoreProject.Controllers
             //var responseFromMongo = new UploadFileToMongo(formData).uploadFileToMongo().ToString();
             if (response.IsSuccessStatusCode)
             {
+                await Index5();
             }
 
             /*
